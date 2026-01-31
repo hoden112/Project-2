@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sms.controller.GradeController"
+      spacing="20" alignment="TOP_CENTER" stylesheets="/style/main/main.css">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Grade Management" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="15" vgap="10" alignment="CENTER">
+        <!-- Row 0: Grades are usually assigned to an Enrollment (Student + Course) -->
+        <Label text="Enrollment:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="enrollmentComboBox" prefWidth="250" promptText="Select Student - Course" 
+                  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <!-- Row 1 -->
+        <Label text="Grade Type:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="gradeTypeComboBox" prefWidth="250" 
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <!-- Row 2 -->
+        <Label text="Score:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="scoreField" prefWidth="250" promptText="Enter 0.0 - 100.0" 
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Add" onAction="#handleAdd"/>
+        <Button text="Update" onAction="#handleUpdate"/>
+        <Button text="Delete" onAction="#handleDelete"/>
+        <Button text="Clear" onAction="#handleClear"/>
+    </HBox>
+
+    <TableView fx:id="gradeTable" prefHeight="300" prefWidth="600">
+        <columns>
+            <TableColumn text="ID" fx:id="idColumn" prefWidth="50"/>
+            <TableColumn text="Student" fx:id="studentColumn" prefWidth="150"/>
+            <TableColumn text="Course" fx:id="courseColumn" prefWidth="150"/>
+            <TableColumn text="Grade Type" fx:id="gradeTypeColumn" prefWidth="120"/>
+            <TableColumn text="Score" fx:id="scoreColumn" prefWidth="80"/>
+        </columns>
+    </TableView>
+
+    <Button text="Back to Dashboard" onAction="#handleBack"/>
+
+</VBox>
