@@ -39,7 +39,6 @@ public class SceneSwitcher {
 
     /**
      * Load FXML and return the controller instance.
-     *
      * Useful if you need to pass data to the next controller.
      *
      * @param fxmlPath Path to FXML
