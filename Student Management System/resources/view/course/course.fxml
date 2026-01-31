@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?> 
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sms.controller.CourseController"
+      spacing="15" 
+      alignment="TOP_CENTER"
+      stylesheets="/style/main/main.css">
+
+    <!-- Fix for the "Unable to coerce 20" error -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Course Management" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10" alignment="CENTER">
+        <Label text="Course Code:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="courseCodeField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Course Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="courseNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Credits:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="creditsField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Add" onAction="#handleAddCourse"/>
+        <Button text="Update" onAction="#handleUpdateCourse"/>
+        <Button text="Delete" onAction="#handleDeleteCourse"/>
+        <Button text="Clear" onAction="#handleClearFields"/>
+    </HBox>
+
+    <TableView fx:id="courseTable" prefHeight="300" prefWidth="500">
+        <columns>
+            <TableColumn text="ID" fx:id="idColumn" prefWidth="50"/>
+            <TableColumn text="Code" fx:id="codeColumn" prefWidth="100"/>
+            <TableColumn text="Name" fx:id="nameColumn" prefWidth="250"/>
+            <TableColumn text="Credits" fx:id="creditColumn" prefWidth="80"/>
+        </columns>
+    </TableView>
+
+    <!-- Adding a Back Button for better navigation -->
+    <Button text="Back to Dashboard" onAction="#handleBack"/>
+
+</VBox>
