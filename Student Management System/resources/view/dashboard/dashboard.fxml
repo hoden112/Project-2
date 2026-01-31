@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sms.controller.DashboardController">
+
+    <top>
+        <Label text="Student Dashboard"
+               style="-fx-font-size: 18px; -fx-padding: 10;" />
+    </top>
+
+    <center>
+        <VBox spacing="10" alignment="CENTER">
+            <Label fx:id="gpaLabel" text="GPA: -" />
+            <Button text="Calculate GPA" onAction="#handleCalculateGPA"/>
+            <Button text="Export Grades (CSV)" onAction="#handleExport"/>
+        </VBox>
+    </center>
+
+</BorderPane>
