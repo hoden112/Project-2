@@ -1,0 +1,88 @@
+/* main.css - Global styles for JavaFX application */
+
+/* Root layout styling */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f4f4f9;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+/* Text fields */
+.text-field, .password-field {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 4;
+    -fx-padding: 6px;
+    -fx-font-size: 14px;
+}
+
+/* TableView */
+.table-view {
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4;
+    -fx-background-color: #fff;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #4CAF50;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* VBox spacing */
+.vbox {
+    -fx-spacing: 10;
+}
+
+/* HBox spacing */
+.hbox {
+    -fx-spacing: 10;
+}
+
+/* Alerts */
+.dialog-pane {
+    -fx-font-size: 14px;
+}
+
+/* Navigation bar / dashboard */
+.nav-bar {
+    -fx-background-color: #333;
+    -fx-padding: 10px;
+}
+
+.nav-bar .label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    -fx-background-color: #eee;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+    -fx-font-size: 12px;
+    -fx-text-fill: #666;
+}
