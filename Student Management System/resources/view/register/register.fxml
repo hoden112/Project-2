@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sms.controller.LoginController"
+      spacing="20"
+      alignment="CENTER"
+      stylesheets="/style/main/main.css">
+
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <Label text="Student Management System"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="15" alignment="CENTER">
+        <!-- Row 0 -->
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="usernameField" promptText="Enter username" 
+                   prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <!-- Row 1 -->
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <PasswordField fx:id="passwordField" promptText="Enter password" 
+                       prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Login" fx:id="loginButton" onAction="#handleLogin" prefWidth="80"/>
+        <Button text="Register" fx:id="registerButton" onAction="#handleRegister" prefWidth="80"/>
+    </HBox>
+
+    <Label fx:id="messageLabel" textFill="red"/>
+
+</VBox>
