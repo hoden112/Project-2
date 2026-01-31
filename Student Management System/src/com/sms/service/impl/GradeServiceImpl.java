@@ -128,7 +128,7 @@ public class GradeServiceImpl implements GradeService {
     @Override
     public double calculateGPA(String studentId) {
         List<Grade> grades = gradeDAO.getGradesByStudentId(studentId);
-        if (grades.isEmpty()) return 0.0;
+        if (grade.isEmpty()) return 0.0;
 
         double totalPoints = 0;
         int totalCredits = 0;
