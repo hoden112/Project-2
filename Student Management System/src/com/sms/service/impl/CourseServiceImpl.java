@@ -9,7 +9,6 @@ import com.sms.service.interfaces.CourseService;
 import java.util.List;
 
 /**
- * CourseServiceImpl
  *
  * Contains business logic, validation, and acts as a bridge
  * between Controller and DAO layers.
