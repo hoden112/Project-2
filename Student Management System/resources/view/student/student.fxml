@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.sms.controller.StudentController"
+      spacing="20"
+      alignment="CENTER"
+      stylesheets="/style/main/main.css"> 
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Title -->
+    <Label text="Student Management"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <!-- Student Form -->
+    <GridPane hgap="10" vgap="15" alignment="CENTER">
+        <!-- Row 0 -->
+        <Label text="Student ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="studentIdField" promptText="Enter Student ID" prefWidth="200" 
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <!-- Row 1 -->
+        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="fullNameField" promptText="Enter Full Name" prefWidth="200" 
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <!-- Row 2 -->
+        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="emailField" promptText="Enter Email" prefWidth="200" 
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <!-- Row 3 -->
+        <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="phoneField" promptText="Enter Phone" prefWidth="200" 
+                   GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <!-- Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Add" onAction="#handleAdd"/>
+        <Button text="Update" onAction="#handleUpdate"/>
+        <Button text="Delete" onAction="#handleDelete"/>
+        <Button text="Clear" onAction="#handleClear"/>
+    </HBox>
+
+    <!-- Search -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Search:"/>
+        <TextField fx:id="searchField" promptText="Enter keyword"/>
+        <Button text="Filter" onAction="#handleSearch"/>
+    </HBox>
+
+    <!-- TableView -->
+    <TableView fx:id="studentTable" prefHeight="300" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="studentIdColumn" text="Student ID" prefWidth="100"/>
+            <TableColumn fx:id="fullNameColumn" text="Full Name" prefWidth="150"/>
+            <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
+            <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <!-- Feedback Label -->
+    <Label fx:id="messageLabel" textFill="red"/>
+
+    <!-- Back Button to Dashboard -->
+    <Button text="Back to Dashboard" onAction="#handleBack"/>
+
+</VBox>
