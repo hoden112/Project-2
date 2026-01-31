@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * CourseDAO
- *
  * Interface defining database operations for Course entities.
  */
 public interface CourseDAO {
