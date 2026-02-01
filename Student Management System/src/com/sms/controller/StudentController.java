@@ -4,25 +4,23 @@ import com.sms.model.academic.Student;
 import com.sms.service.interfaces.StudentService;
 import com.sms.service.impl.StudentServiceImpl;
 import com.sms.util.AlertUtil;
-import com.sms.util.SceneSwitcher; // Import SceneSwitcher
+import com.sms.util.SceneSwitcher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.event.ActionEvent; // Import ActionEvent
-import javafx.scene.Node; // Import Node
-import javafx.stage.Stage; // Import Stage
 
 public class StudentController {
 
+    // Fields matching fx:id in FXML
     @FXML private TextField studentIdField;
     @FXML private TextField fullNameField;
     @FXML private TextField emailField;
     @FXML private TextField phoneField;
     @FXML private TextField searchField;
-    @FXML private Label messageLabel; // Ensure this exists in FXML if you use it
 
     @FXML private TableView<Student> studentTable;
     @FXML private TableColumn<Student, Integer> idColumn;
@@ -36,6 +34,7 @@ public class StudentController {
 
     @FXML
     public void initialize() {
+       
         idColumn.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getId()).asObject());
         studentIdColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStudentId()));
         fullNameColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getFullName()));
@@ -44,12 +43,13 @@ public class StudentController {
 
         loadStudents();
 
-        studentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, selectedStudent) -> {
-            if (selectedStudent != null) {
-                studentIdField.setText(selectedStudent.getStudentId());
-                fullNameField.setText(selectedStudent.getFullName());
-                emailField.setText(selectedStudent.getEmail());
-                phoneField.setText(selectedStudent.getPhone());
+        
+        studentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, selected) -> {
+            if (selected != null) {
+                studentIdField.setText(selected.getStudentId());
+                fullNameField.setText(selected.getFullName());
+                emailField.setText(selected.getEmail());
+                phoneField.setText(selected.getPhone());
             }
         });
     }
@@ -93,7 +93,7 @@ public class StudentController {
         }
     }
 
-    @FXML
+@FXML
     private void handleDelete() {
         Student selected = studentTable.getSelectionModel().getSelectedItem();
         if (selected == null) {
@@ -125,18 +125,17 @@ public class StudentController {
         if (keyword.isEmpty()) {
             loadStudents();
         } else {
-            ObservableList<Student> filteredList = studentList.filtered(s ->
-                s.getFullName().toLowerCase().contains(keyword) ||
+            ObservableList<Student> filtered = studentList.filtered(s -> 
+                s.getFullName().toLowerCase().contains(keyword) || 
                 s.getStudentId().toLowerCase().contains(keyword)
             );
-            studentTable.setItems(filteredList);
+            studentTable.setItems(filtered);
         }
     }
 
-    // ADDED: Method to go back to the dashboard
     @FXML
-    private void handleBack(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    private void handleBack() {
+        Stage stage = (Stage) studentTable.getScene().getWindow();
         SceneSwitcher.switchScene(stage, "/view/dashboard/dashboard.fxml", "Dashboard");
     }
 
