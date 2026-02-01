@@ -3,97 +3,50 @@ package com.sms.model.user;
 import com.sms.model.enums.Role;
 
 /**
- * User
+ * Admin
  *
- * Base class representing a user in the system.
- * Implements common properties for all user types.
+ * Represents an admin user in the system.
+ * Inherits common properties from User.
  */
-public abstract class User {
+public class Admin extends User {
 
-    // Unique ID for the user (database primary key)
-    private int id;
+    // Additional admin-specific properties can be added here
+    // Example: permissionLevel, systemSettings, etc.
+    private int permissionLevel;
 
-    // Username for login
-    private String username;
-
-    // Password (store hashed in real apps)
-    private String password;
-
-    // Role of the user (ADMIN, INSTRUCTOR, STUDENT)
-    private Role role;
-
-    // Constructor
-
-    public User(int id, String username, String password, Role role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-    public User() {
+    // Constructor with ID
+    public Admin(int id, String username, String password, int permissionLevel) {
+        super(id, username, password, Role.ADMIN);
+        this.permissionLevel = permissionLevel;
     }
 
-    // Overloaded constructor without ID (used before DB assignment)
-    public User(String username, String password, Role role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-    private String fullName;
-    public String getFullName() {
-        return fullName;
+    // Constructor without ID (for new admin before DB assignment)
+    public Admin(String username, String password, int permissionLevel) {
+        super(username, password, Role.ADMIN);
+        this.permissionLevel = permissionLevel;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    // Getter and Setter
+    public int getPermissionLevel() {
+        return permissionLevel;
     }
 
-
-
-    // Getters and Setters (Encapsulation)
-    public int getId() {
-        return id;
+    public void setPermissionLevel(int permissionLevel) {
+        this.permissionLevel = permissionLevel;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    // Common behavior (can be overridden by subclasses)
-    public boolean hasRole(Role role) {
-        return this.role == role;
+    // Admin-specific behavior
+    public void resetUserPassword(User user, String newPassword) {
+        // Simple logic example, in real app hash password first
+        user.setPassword(newPassword);
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", role=" + role +
+        return "Admin{" +
+                "id=" + getId() +
+                ", username='" + getUsername() + '\'' +
+                ", permissionLevel=" + permissionLevel +
                 '}';
     }
 }
